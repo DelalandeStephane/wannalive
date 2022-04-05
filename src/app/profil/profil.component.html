@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+    <header class="header-profil"
+    [ngStyle]='{ background : !backgroundPath ? "#F4BE32" : backgroundPath }' 
+    #headerProfil>
+        <div class="deco-header"></div>
+        <div class="header-main-block">
+            <app-avatar [authData] = "authData" [avatarPath] = "avatarPath"></app-avatar>
+            <div class="profil-presentation">
+                <h1>{{ userData?.userName }}</h1>
+                <h2>{{ userData?.userSubcategory }}</h2>
+                <a *ngIf="userData?.website" href="{{userData?.website}}">Site web</a>
+                <p>{{ contactCount }} Contacts</p>
+            </div>
+        </div>
+
+        <form *ngIf="profilId === userId || userStatus === 'admin'" [formGroup]="backgroundForm">
+            <div class="input-alert"
+            *ngIf="backgroundForm.get('background')?.hasError('mime-type')">
+           Le format de l'image doit être en JPEG ou PNG</div>
+           <div class="input-alert"
+           *ngIf="backgroundForm.get('background')?.hasError('size')">
+          L'image ne doit pas dépasser les 5mb</div>
+            <input type="file" class="file-input" formControlName="background" (change)="backgroundSubmit($event)" #fileUpload>
+            <button (click)="fileUpload.click()" class="btn-primary btn-header-profil">Modifier image d'entête</button>
+        </form>
+        <button *ngIf="(userData?._id !== userId) && (alreadyOnContact === false) && (RequestContactOn === false)" (click)="addContact(userData?._id)" class="btn-primary btn-header-profil">Ajouter aux contacts</button>
+        <button *ngIf="RequestContactOn" disabled (click)="addContact(profilId)" class="btn-primary btn-header-profil">En attente de validation</button>
+
+        
+        <div class="social-bar">
+            <a *ngIf="userData?.facebookLink" class="social-link" href="{{userData?.facebookLink}}"><img  src="../../assets/img/icon/social/facebook-logo.svg" alt="facebook-logo"></a>
+            <a *ngIf="userData?.twitterLink" class="social-link" href="{{userData?.twitterLink}}"><img  src="../../assets/img/icon/social/twitter-logo.svg" alt="twitter-logo"></a>
+            <a *ngIf="userData?.instagramLink"class="social-link" href="{{userData?.instagramLink}}"><img  src="../../assets/img/icon/social/instagram-logo.svg" alt="instagram-logo"></a>
+            <a *ngIf="userData?.youtubeLink"class="social-link" href="{{userData?.youtubeLink}}"><img  src="../../assets/img/icon/social/youtube-logo.svg" alt="youtube-logo"></a>
+            <a *ngIf="userData?.spotifyLink"class="social-link" href="{{userData?.spotifyLink}}"><img  src="../../assets/img/icon/social/spotify-logo.svg" alt="spotify-logo"></a>
+            <a *ngIf="userData?.deezerLink"class="social-link" href="{{userData?.deezerLink}}"><img  src="../../assets/img/icon/social/deezer-logo.svg" alt="deezer-logo"></a>
+
+        </div>
+   
+
+
+    </header>
+    <nav class="profil-nav">
+        <a [routerLink]="['./']">Publications</a>
+        <a [routerLink]="['presentation']">A propos</a>
+        <a [routerLink]="['contact']">Liste de contact</a>
+        <a *ngIf="profilId === userId || userStatus === 'admin'" [routerLink]="['modification-profil']">Modifier profil</a>
+    </nav>
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+    <nav>
+        <a class="nav-logo" [routerLink]="['/auth']"><img class="icon-model" src="../../assets/img/icon/concert.svg" alt="logo"><p>WannaLive</p></a>
+    </nav>
+        <div class="home-block">
+            <div class="home-info-block">
+                <h1 class="title-1">Organisez vos <br> concert simplement</h1>
+                <p class="p-medium">
+                    Besoin de trouver des lieux pour vos concerts ou des groupes à venir jouer chez vous ? 
+                    Wannalive vous met en contact des groupes de tout horizon et  des organisateurs de 
+                    différents types ( salle de concert, festival, …).
+                    Inscrivez-vous et simplifiez vous la vie sur scène !
+
+                </p>
+                <h2 class="title-3">Connectez-vous !</h2>
+                <app-login></app-login>
+                <p>Vous n'avez pas encore de compte ? <a class="deco-link" [routerLink]="['/inscription']">Inscrivez-vous</a></p>
+                <button class="clear-btn" (click)="showForgetPassword()" >Mot de passe oublié</button>
+            </div>
+
+            <div class="parent">
+                <div class="div1"> </div>
+                <div class="div2"> </div>
+                <div class="div3"> </div>
+                <div class="div4"> </div>
+                <div class="div5"> </div>
+                <div class="div6"> </div>
+            </div>   
+
+        </div>
+</div>

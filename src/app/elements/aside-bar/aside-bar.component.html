@@ -1,0 +1,14 @@
+<nav class="aside-navbar">
+    <a class="aside-link" [routerLink]="['/profil/',userId]">Votre profil</a>
+    <a class="aside-link" [routerLink]="['/chat']">Chat</a>
+    <a class="aside-link" [routerLink]="['/notification']">Notification</a>
+    <a class="aside-link" [routerLink]="['/recherche-contact']">Recherche contact</a>
+    <button class="btn-danger clear-btn" (click)="logOut()">Se déconnecter</button>
+    <div class="contact-aside">
+        <h3>Contact en ligne</h3>
+        <a class="contact-line" *ngFor="let user of userList" [routerLink]="['/profil/',user._id]">
+            <img class="nav-thumb-avatar" src="{{user.avatarPath}}" alt="avatar">
+            <span>{{user.userName}}</span>
+        </a>
+    </div>
+</nav>

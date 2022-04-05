@@ -1,0 +1,152 @@
+<div class="container">
+   <nav>
+       <a class="nav-logo" [routerLink]="['/']"><img class="icon-model" src="../../assets/img/icon/concert.svg" alt="logo"><p>WannaLive</p></a>
+   </nav>
+   <form novalidate enctype="multipart/form-data"  [formGroup]="newUserForm" (ngSubmit)="newUserSubmit()">
+      <mat-stepper labelPosition="bottom" linear #stepper>
+         <mat-step  label="qui êtes vous ?" completed="false" [optional]="false">
+            <fieldset class="fset-big-radio-type">
+               <legend>Qui êtes-vous ?</legend>
+               <label>
+                  <input type="radio" formControlName="userCategory" required value="artist">
+                  <figure (click) = "goNext()">
+                     <img src="../../assets/img/icon/artist-logo.svg" alt="logo artitste/musicien">
+                     <figcaption>Artiste/Groupe</figcaption>
+                 </figure>
+                </label>
+                <label>
+                  <input type="radio" formControlName="userCategory" required value="Event-organizer">
+                  <figure (click) = "goNext()" >
+                     <img src="../../assets/img/icon/ticket-logo.svg" alt="logo organisateur">
+                     <figcaption>Organisateur</figcaption>
+                 </figure>
+                </label>
+            </fieldset>
+         </mat-step>
+
+         <mat-step label="Présentation" completed="false">
+            <fieldset class="fset-intro">
+                  <label>
+                     <p>{{ userNameLabel }}</p>
+                     <input type="text" formControlName="userName" >
+                     <div class="input-alert" 
+                     *ngIf="newUserForm.get('userName')?.invalid && 
+                     newUserForm.get('userName')?.touched">Le nom doit contennir au moins une lettre</div>
+                  </label>
+                  
+                  <label>
+                     <p>{{ userSubcategory }}</p>
+                     <select formControlName="userSubcategory">
+                        <option *ngFor="let s of userSubcategoryList" value="{{s}}">{{s}}</option>
+                     </select>
+                     <div class="input-alert" 
+                     *ngIf="newUserForm.get('userSubcategory')?.invalid && 
+                     newUserForm.get('userSubcategory')?.touched">Vous devez choisir un style musical</div>
+                  </label>
+               <label id="description-field">
+                  <p>Description</p>
+                  <textarea formControlName="userDescription" cols="30" rows="10"></textarea>
+               </label>
+            </fieldset>
+            <div class="bar-btn">
+               <button class="btn-primary"  matStepperPrevious>Précédent</button>
+               <button class="btn-primary" type="button" (click) = "goNext2()">Suivant</button>
+            </div>
+         </mat-step>
+
+         <mat-step label="Coordonnées" >
+            <fieldset class="fset-contact">
+               <fieldset class="fset-contact-det">
+                  <label>
+                     <p>Département*</p>
+                     <select formControlName="department">     
+                        <option *ngFor="let d of departments" value="{{d.num_dep}}-{{d.dep_name}}">{{d.num_dep}}-{{d.dep_name}}</option>
+                     </select>
+                     <div class="input-alert"
+                     *ngIf="newUserForm.get('department')?.invalid && 
+                     newUserForm.get('department')?.touched">Vous devez préciser votre Département</div>
+                  </label>
+                  <label>
+                     <p>Email*</p>
+                     <input type="text" autocomplete="off" formControlName="email"(blur)="confirmEmail()">
+
+                     <div class="input-alert"
+                     *ngIf="newUserForm.get('email')?.touched && newUserForm.get('email')?.hasError('required')">
+                     Ce champ est obligatoire</div>
+
+                     <div class="input-alert"
+                     *ngIf="newUserForm.get('email')?.touched && newUserForm.get('email')?.hasError('email')">
+                     Le format de l'email n'est pas bon</div>
+
+                     <div class="input-alert"
+                     *ngIf="newUserForm.get('email')?.hasError('already-use')">
+                     Cet email est déja utilisé</div>
+                  </label>
+                  <label>
+                     <p>Téléphone</p>
+                     <input type="text" formControlName="phoneNumber">
+                  </label>
+                  <label>
+                     <p>Site web</p>
+                     <input type="text" formControlName="website">
+                  </label>
+                  <label>
+                     <p>mot de passe*</p>
+                     <input type="password" formControlName="password">
+                     <div class="input-alert"
+                     *ngIf="newUserForm.get('password')?.invalid && 
+                     newUserForm.get('password')?.touched">
+                     votre mot de passe doit comporter au moins 8 caractères, des carractères alphanumeriques et speciaux et une majuscule
+                  </div>
+                  </label>
+                  <label>
+                     <p>Confirmation mot de passe*</p>
+                     <input type="password" formControlName="confirmPassword" (blur)="confirmPassword()">
+                     <div class="input-alert"
+                     *ngIf="newUserForm.get('confirmPassword')?.invalid && 
+                     newUserForm.get('confirmPassword')?.touched">Les deux mots de passe ne sont pas identiques</div>
+                  </label>
+               </fieldset>
+   
+               <fieldset class="fset-social">
+                  <legend>Réseaux sociaux</legend>
+                  <label>
+                     <p>Facebook</p>
+                     <input type="text" formControlName="facebookLink">
+                  </label>
+                  <label>
+                     <p>Twitter</p>
+                     <input type="text" formControlName="twitterLink">
+                  </label>
+                  <label>
+                     <p>Instagram</p>
+                     <input type="text" formControlName="instagramLink">
+                  </label>
+                  <label>
+                     <p>Youtube</p>
+                     <input type="text" formControlName="youtubeLink">
+                  </label>
+                  <label>
+                     <p>Spotify</p>
+                     <input type="text" formControlName="spotifyLink">
+                  </label>
+                  <label>
+                     <p>Deezer</p>
+                     <input type="text" formControlName="deezerLink">
+                  </label>
+               </fieldset>
+            </fieldset>
+            <div class="bar-btn">
+               <button class="btn-primary"  matStepperPrevious>Précédent</button>
+               <button class="btn-primary" type="submit">Valider</button>
+            </div>
+         </mat-step>
+      </mat-stepper>
+   </form>
+</div>
+
+
+
+
+
+  

@@ -1,0 +1,3 @@
+<app-form-post *ngIf="profilId === userId" (newPosts)="getNewPost($event)" [targetForm]="'profil-page'"></app-form-post>
+<app-post *ngFor="let post of posts" [post] ="post" (deleteAction)="updateListPost()" id="p-{{post._id}}"></app-post>
+<p class="no-content-alert" *ngIf="posts <= 0">Pas de post pour le moment</p>

@@ -1,0 +1,7 @@
+<form novalidate class="post-form" [formGroup]="postForm" (ngSubmit)="postSubmit()">
+    <label for="postControl">Quelque chose à partager ?</label>
+    <textarea formControlName="post"  id="postControl" >{{ content }}</textarea>
+    <div class="btn-bar">
+        <button class="btn-primary" type="submit">Envoyer</button>
+    </div>
+</form>

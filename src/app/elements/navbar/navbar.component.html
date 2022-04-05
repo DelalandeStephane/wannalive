@@ -1,0 +1,19 @@
+<nav class="nav-bar">
+    <a class="nav-logo" [routerLink]="['/']"><img class="icon-model" src="../../assets/img/icon/concert.svg" alt="logo"><p>WannaLive</p></a>
+    <div class="nav-box">
+    <a class="btn-primary" *ngIf="userStatus === 'admin'" [routerLink]="['/admin']">Admin zone</a>
+    <button class="nav-user-link" mat-button [matMenuTriggerFor]="nofiMenu"><mat-icon class="nav-icon">notifications</mat-icon><div *ngIf="notifCount > 0" class="notif-bulle">{{notifCount}}</div></button>
+    <mat-menu #nofiMenu="matMenu" xPosition="before">
+        <div *ngFor="let notif of notifList" class="notif">
+            <a *ngIf="notif.type ==='add-contact'"  mat-menu-item [routerLink]="['/notification']">{{ notif.targetName}} {{ notif.content}}</a>
+            <a *ngIf="notif.type ==='send-message'" (click) = "actionNotif(notif._id)"  mat-menu-item [routerLink]="['/chat', notif.targetId]">{{ notif.targetName}} {{ notif.content}}</a>
+
+        </div>
+    </mat-menu>
+
+
+    <button class="nav-user-link" mat-button (click)="asideToggleAction()"><img class="nav-thumb-avatar" src="{{avatarPath}}" alt="avatar"></button>
+    </div>
+
+</nav>
+<app-aside-bar *ngIf="asideToggle" [userList]='userList'></app-aside-bar>

@@ -1,0 +1,9 @@
+<form novalidate class="login-form" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+    <div class="input-alert" 
+    *ngIf=" (loginForm.get('email')?.touched && loginForm.get('email')?.invalid)  || (loginForm.get('email')?.touched && loginForm.get('password')?.invalid)">Vos identifiant sont incorrects</div>
+    <label for="connexion-email">Email</label>
+    <input type="email" formControlName="email" id="connexion-email" required>
+    <label for="connexion-password">Mot de passe</label>
+    <input type="password" formControlName="password" id="connexion-password" required>
+    <button class="btn-primary" type="submit">Se connecter</button>
+</form>

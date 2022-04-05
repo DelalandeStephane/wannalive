@@ -1,0 +1,96 @@
+
+    <form novalidate enctype="multipart/form-data"  [formGroup]="updateForm" (ngSubmit)="updateUserSubmit()">
+       <mat-stepper labelPosition="bottom" linear #stepper>
+          <mat-step label="Présentation">
+             <fieldset class="fset-intro">
+                   <label>
+                      <p>{{ userNameLabel }}</p>
+                      <input type="text" formControlName="userName" value="{{ userData?.userName}}" >
+                      <div class="input-alert" 
+                      *ngIf="updateForm.get('userName')?.invalid && 
+                      updateForm.get('userName')?.touched">Le nom doit contennir au moins une lettre</div>
+                   </label>
+                   
+                   <label>
+                      <p>{{ userSubcategory }}</p>
+                      <select formControlName="userSubcategory">
+                         <option *ngFor="let s of userSubcategoryList" value="{{s}}">{{s}}</option>
+                      </select>
+                      <div class="input-alert" 
+                      *ngIf="updateForm.get('userSubcategory')?.invalid && 
+                      updateForm.get('userSubcategory')?.touched">Vous devez choisir un style musical</div>
+                   </label>
+                <label id="description-field">
+                   <p>Description</p>
+                   <textarea formControlName="userDescription" cols="30" rows="10" [value]=" userData?.userDescription"></textarea>
+                </label>
+             </fieldset>
+             <div class="bar-btn">
+                 <div></div>
+                <button class="btn-primary" type="button" mat-button matStepperNext>Suivant</button>
+             </div>
+          </mat-step>
+ 
+          <mat-step label="Coordonnées" >
+             <fieldset class="fset-contact">
+                <fieldset class="fset-contact-det">
+                   <label>
+                      <p>Département*</p>
+                      <select formControlName="department">     
+                         <option *ngFor="let d of departments" value="{{d.num_dep}}-{{d.dep_name}}">{{d.num_dep}}-{{d.dep_name}}</option>
+                      </select>
+                      <div class="input-alert"
+                      *ngIf="updateForm.get('department')?.invalid && 
+                      updateForm.get('department')?.touched">Vous devez préciser votre Département</div>
+                   </label>
+                   <label>
+                      <p>Téléphone</p>
+                      <input type="text" formControlName="phoneNumber" value="{{ userData?.phoneNumber}}">
+                   </label>
+                   <label>
+                      <p>changer mot de passe</p>
+                     <button type="button" class="btn-primary"(click)="showUpdatePassword()">Modifier</button>
+                   </label>
+                   <label>
+                      <p>Site web</p>
+                      <input type="text" formControlName="website" value="{{ userData?.website}}">
+                   </label>
+                </fieldset>
+    
+                <fieldset class="fset-social">
+                   <legend>Réseaux sociaux</legend>
+                   <label>
+                      <p>Facebook</p>
+                      <input type="text" formControlName="facebookLink" value="{{ userData?.facebookLink}}">
+                   </label>
+                   <label>
+                      <p>Twitter</p>
+                      <input type="text" formControlName="twitterLink" value="{{ userData?.twitterLink}}">
+                   </label>
+                   <label>
+                      <p>Instagram</p>
+                      <input type="text" formControlName="instagramLink" value="{{ userData?.instagramLink}}">
+                   </label>
+                   <label>
+                      <p>Youtube</p>
+                      <input type="text" formControlName="youtubeLink" value="{{ userData?.youtubeLink}}">
+                   </label>
+                   <label>
+                      <p>Spotify</p>
+                      <input type="text" formControlName="spotifyLink" value="{{ userData?.spotifyLink}}">
+                   </label>
+                   <label>
+                      <p>Deezer</p>
+                      <input type="text" formControlName="deezerLink" value="{{ userData?.deezerLink}}">
+                   </label>
+                </fieldset>
+             </fieldset>
+             <div class="bar-btn">
+                <button class="btn-primary" mat-button matStepperPrevious>Précédent</button>
+                <button class="btn-primary" type="submit">Valider</button>
+             </div>
+          </mat-step>
+       </mat-stepper>
+    </form>
+
+ 

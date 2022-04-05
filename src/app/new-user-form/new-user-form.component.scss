@@ -1,0 +1,160 @@
+form {
+    margin: 0px 50px;
+}
+
+.fset-big-radio-type {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: none;
+
+    /* HIDE RADIO */
+   [type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+ figure {
+    padding: 15px;
+    transition: background-color 0.5s;
+ }
+ figure:hover {
+     background-color: rgba($color: #000000, $alpha: 0.4);
+ }
+  figcaption {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 15px;
+  }
+
+  legend {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 50px;    
+  }
+}
+
+.fset-intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: auto;
+    label {
+        width: 33%;
+    }
+    select {
+        width: 100%;
+    }
+}
+
+#description-field {
+    width: 100%;
+    textarea {
+        width: 100%;
+    }
+}
+
+.fset-contact {
+    max-width: 700px;
+    margin: auto;
+}
+
+.fset-contact-det {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    label {
+        width: 50%;
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
+    input {
+        width: 100%;
+    }
+}
+
+.fset-social {
+    legend {
+        font-weight: bold;
+        font-size: 1.8rem;
+        color: #F4BE32;
+    }
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    label {
+        padding: 0 20px;
+        box-sizing: border-box;
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+
+    .fset-big-radio-type {
+        legend {
+            font-size: 1.5rem;
+        }
+        figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    form {
+        margin: auto;
+    }
+
+    .fset-intro {
+        flex-direction: column;
+        label : {
+            width: 200px;
+        }
+    }
+
+    #description-field {
+        width: 96%;
+        margin: 0 5px;
+        textarea {
+            width: 100%;
+        }
+    }
+
+    .fset-contact {
+        padding: 0;
+    }
+
+    .fset-contact-det {
+
+        label {
+            width: 280px;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        select {
+            width: 100%;
+        }
+    }
+
+    .fset-social {
+        padding: 0;
+        justify-content: center;
+        label {
+            padding: 0;
+            width: 200px;
+            margin: 0 20px;
+        }
+    }
+
+ }

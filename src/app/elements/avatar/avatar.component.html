@@ -1,0 +1,21 @@
+<form *ngIf="authData.profilId === authData.userId || userStatus === 'admin'; else justAvatar" [formGroup]="avatarForm">
+       <input  type="file" class="file-input" formControlName="avatar" (change)="avatarSubmit($event)" #fileUpload>
+    <div class="user-pic">
+          <button   class="upload-btn"
+             (click)="fileUpload.click()">
+             <mat-icon>attach_file</mat-icon>
+          </button>
+          <img class="avatar-thumb" [src]="avatarPath" alt="Avatar utilisateur">
+          <div class="input-alert"
+          *ngIf="avatarForm.get('avatar')?.hasError('mime-type')">
+         Le format de l'image doit être en JPEG ou PNG</div>
+         <div class="input-alert"
+         *ngIf="avatarForm.get('avatar')?.hasError('size')">
+        L'image ne doit pas dépasser les 2mb</div>
+    </div>
+   </form>
+   <ng-template  #justAvatar>
+      <div class="user-pic">
+         <img class="avatar-thumb" [src]="avatarPath" alt="Avatar utilisateur">
+      </div>
+   </ng-template>

@@ -1,0 +1,31 @@
+<div class="post-block">
+    <header>
+        <div class="contact-bar">
+            <img class="nav-thumb-avatar" [src]="imagePath" alt="avatar">
+            <div class="header-info">
+                <a [routerLink]="['/profil/',targetId]">{{ post.userName }}</a>
+                <p>{{ post.createdAt | date :'dd/MM/yyyy à H:mm' }}</p>
+            </div>
+        </div>
+        <button *ngIf="profilId === userId || userStatus === 'admin'" mat-icon-button [matMenuTriggerFor]="actionPost" class="post-btn">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #actionPost="matMenu">
+            <button mat-menu-item (click) = 'updatePost()'>
+              Modifier
+            </button>
+            <button mat-menu-item (click)="deletePost()">
+              Supprimer
+            </button>
+          </mat-menu>
+    </header>
+    <p *ngIf="!updateMode; else update">
+        {{ post.post}}
+    </p>
+    <ng-template #update>
+      <app-form-post  [content]= 'post.post' [updateMode]="updateMode" [post] = 'post' (updatedPost)= 'updateAction($event)'></app-form-post>
+    </ng-template>
+    
+    <app-comment [postId] = 'post._id' [likeCount] = 'post.likeCount' ></app-comment>
+</div>
+

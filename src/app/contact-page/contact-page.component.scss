@@ -1,0 +1,53 @@
+.contact-block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-el {
+    display: flex;
+    background: rgba($color: #000000, $alpha: 0.5);
+    box-sizing: border-box;
+    width: 47%;
+    padding: 20px;
+    margin: 10px;
+}
+.contact-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.contact-data {
+    margin-left: 20px;
+}
+.contact-name {
+    margin-bottom: 10px;
+    color: #F4BE32;
+}
+
+.contact-cat {
+    margin: 0;
+}
+
+.contact-subcat {
+    margin: 0;
+}
+
+.contact-delete {
+    margin-top: 35px;
+    display: block;
+    font-weight: bold;
+    color: red;
+}
+
+@media screen and (max-width: 800px)
+{
+    .contact-block {
+        justify-content: center;
+    }
+    .contact-el {
+        width: 300px;
+        padding: 10px;
+        position: relative;
+    }
+
+}

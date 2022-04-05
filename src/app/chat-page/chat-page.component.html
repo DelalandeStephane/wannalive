@@ -1,0 +1,81 @@
+<app-navbar [notifList]="NotifsAfterChatCheck" [notifCount]="NotifsAfterChatCheckCount"></app-navbar>
+<div id="chat-page" class="main-container">
+
+    <div id="contact-list">
+      <div class="contact-list-accordion">
+        <mat-accordion >
+          <mat-expansion-panel hideToggle id="request-panel"[(expanded)]="panelOpenState">
+            <mat-expansion-panel-header class="request-header" >
+              <mat-panel-title class="request-field">
+                Vos discutions
+                <mat-icon style="color: #F4BE32;">create</mat-icon>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-accordion>
+                <mat-expansion-panel hideToggle id="request-panel"[(expanded)]="requestPanelOpenState">
+                  <mat-expansion-panel-header class="request-header" >
+                    <mat-panel-title class="request-field">
+                      Créer une discution
+                      <mat-icon style="color: #F4BE32;">create</mat-icon>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <form novalidate  [formGroup]="listenerSearch" class="listenerSearchForm" (ngSubmit)="listenerSubmit()">
+                    <input type="text"
+                    [placeholder]="userPlaceHolder"
+                    [formControl]="user"
+                    matInput
+                    [matAutocomplete]="auto"
+                    >
+                    <button mat-mini-fab type="submit">OK</button>
+                  </form>
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option class="contact-input" *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <p class="listener-el" *ngFor="let listener of requestListenerList">{{ listener }}</p>
+                    <button class="btn-primary" *ngIf="requestListenerList.length > 0" (click)='createDiscutionRoom()'>Créer la discution</button>
+                </mat-expansion-panel>
+              </mat-accordion>
+              <h3 >Liste des discutions</h3>
+              <div class="user-list-scroll">
+                <div *ngFor="let room of roomList"  class="contact-line" (click)='getRoom(room._id)'>
+                  <img class="nav-thumb-avatar" src="{{room.avatarPath}}" alt="avatar">
+                  <span>{{ room.roomName}}</span>
+                </div>
+              </div>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <div class="chat-container">
+        <div id="chat-window" #messageWindow [scrollTop]="messageWindow.scrollHeight">
+            <div *ngFor="let message of messageList" class="message-container" 
+            [ngStyle]="{'justify-content': message.emitterUser === actualUser ? 'right' : 'left'}">
+              <div class="message-blk"
+              [ngStyle]="{'background-color': message.emitterUser === actualUser ? '' : '#dee2e6'}">
+                <div class="header-block">
+                  <h3 class="message-title"
+                    [ngStyle]="{'color': message.emitterUser === actualUser ? '' : 'black'}">{{ message.emitterName }}</h3>
+                  <button *ngIf="message.emitterUser === actualUser" class="clear-btn" (click)="deleteMessage(message.emitterUser,message._id)">
+                    <mat-icon>clear</mat-icon>
+                  </button>
+              </div>
+                <p class="message-el"
+                [ngStyle]="{'color': message.emitterUser === actualUser ? '' : 'black'}">{{message.content}}</p>
+                <p class="message-date"
+                [ngStyle]="{'color': message.emitterUser === actualUser ? '' : 'black'}">{{ message.createdAt | date :'dd/MM/yyyy à H:mm' }}</p>
+              </div>  
+        </div>
+        </div>
+        <form *ngIf="actualRoom" novalidate class="chat-form" [formGroup]="chatForm" (ngSubmit)="chatSubmit()">
+            <label for="postControl">Envoyer un message</label>
+            <textarea formControlName="message"  id="postControl" ></textarea>
+            <div class="btn-bar">
+                <button class="btn-primary" type="submit">Envoyer</button>
+            </div>
+        </form>
+    </div>
+
+</div>

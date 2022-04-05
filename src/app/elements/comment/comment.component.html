@@ -1,0 +1,30 @@
+<div class="comment-bar">
+    <button class="thumb-btn" (click)="sendLike()"><mat-icon [ngStyle]="{'color': isLiked  ? '#20c997' : 'white'}" class="thumb-icon">thumb_up_alt</mat-icon> {{ likeCount }}</button>
+    <div>{{ commentsCount }} Commentaires</div>
+ </div>
+<form *ngIf="userStatus !== 'admin'" novalidate [formGroup]="commentForm" (ngSubmit)="commentSubmit()">
+    <h3>Laissez un commentaire</h3>
+    <div class="comment-line">
+        <img class="nav-thumb-avatar" src="{{avatarPath}}" alt="avatar">
+        <input formControlName="content"  class="comment-input" type="text">
+        <button class="btn-comment">OK</button>
+    </div>
+</form>
+
+<button *ngIf="commentBlockOpen" type="button" class="clear-btn btn-comments-limit" (click)="lessComment()" >Fermer fenêtre commentaire <mat-icon class="arrow-nav">expand_less</mat-icon></button>
+<div *ngFor="let comment of commentList" class="comment-block">
+    <header>
+        <div class="contact-bar">
+            <img class="nav-thumb-avatar" src="{{comment.avatarPath}}" alt="avatar">
+            <div class="header-info">
+                <a href="">{{comment.userName}}</a>
+                <p>{{ comment.createdAt | date :'dd/MM/yyyy à H:mm'}}</p>
+            </div>
+        </div>
+        <button *ngIf="currentUser === comment.userId" class="clear-btn" mat-raised-button (click)="deleteComment(comment)">
+            <mat-icon>clear</mat-icon>
+          </button>
+    </header>
+    <p>{{ comment.content }}</p>
+</div>
+<button *ngIf="commentsCount > 1 && commentsShowed < commentsCount " type="button" class="clear-btn btn-comments-limit" (click)="moreComment()" >Voir plus de commentaires <mat-icon class="arrow-nav">expand_more</mat-icon></button>

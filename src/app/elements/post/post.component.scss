@@ -1,0 +1,35 @@
+
+.post-block {
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    a {
+        display: block;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-info {
+    margin-top: 5px;
+    margin-left: 10px;
+    p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+}
+
+.contact-bar{
+    display: flex;
+}
+
+.post-btn {
+    background-color: #F4BE32;
+    border: none;
+    border-radius: 5px;
+}

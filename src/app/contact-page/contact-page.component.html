@@ -1,0 +1,6 @@
+
+<h2>Contact</h2>
+<div class="contact-block">
+    <app-contact-card *ngFor="let contact of contacts" [contactUser] ="contact" [state] ="state" [authData] = "authData" (deleteAction)="updateListContact()" class="contact-el"></app-contact-card>
+</div>
+

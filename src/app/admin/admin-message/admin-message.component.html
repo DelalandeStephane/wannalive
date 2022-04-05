@@ -1,0 +1,32 @@
+<h2>Liste des discutions</h2>
+<table mat-table class="admin-table" [dataSource]="chatRooms">
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="usersChat">
+      <th mat-header-cell *matHeaderCellDef> nb users </th>
+      <td mat-cell *matCellDef="let element"> {{element.usersChat.length}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="nbMessage">
+      <th mat-header-cell *matHeaderCellDef> nb message </th>
+      <td mat-cell *matCellDef="let element"> {{element.messages.length}} </td>
+    </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"> 
+            <div *ngIf="!element.deleteAction; else deleteAction">
+                <button (click) = 'seeChat(element._id)' mat-raised-button color="primary">Voir</button>
+                <button (click)="deleteChat(element)" mat-raised-button color="warn">Supprimer</button> 
+            </div>
+            <ng-template #deleteAction> <p>Utilisateur supprimé</p></ng-template>
+        </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

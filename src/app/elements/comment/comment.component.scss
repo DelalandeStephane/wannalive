@@ -1,0 +1,90 @@
+.nav-thumb-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.comment-line {
+    display: flex;
+    justify-content: center;
+}
+
+.comment-input{
+    width: 80%;
+    height: 35px;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+
+.btn-comment {
+    font-size: 0.9rem;
+    padding: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background: #F4BE32;
+    font-weight: bold;
+    border : none;
+}
+
+.btn-comments-limit {
+    margin: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #F4BE32;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-nav {
+    transform: scale(1.5);
+    margin-left: 10px;
+}
+
+.contact-bar{
+    display: flex;
+}
+
+.comment-block {
+    width: 91.2%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba($color: #ffffff, $alpha: 0.2);
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-info {
+    margin-top: 5px;
+    margin-left: 10px;
+    p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+}
+
+.comment-bar {
+    background: #F4BE32;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.thumb-icon {
+    transform: scale(1.2);
+}
+.thumb-icon-liked {
+    color: green;
+}
+.thumb-btn {
+    background: rgba(0,0,0,0.7);
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}

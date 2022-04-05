@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+    <h2>Notifications</h2>
+    <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Demande de contact">
+            <app-notification *ngFor="let notification of contactNotifications" [notification] = "notification" class="notif-card"></app-notification>
+        </mat-tab>
+        <mat-tab label="Message reçu">
+            <app-notification *ngFor="let notification of chatNotifications" [notification] = "notification" class="notif-card"></app-notification>
+        </mat-tab>
+      </mat-tab-group>
+    
+</div>
+

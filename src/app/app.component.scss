@@ -1,0 +1,17 @@
+::ng-deep .mat-stepper-horizontal {
+    background: none;
+}
+
+::ng-deep .mat-step-header  .mat-step-icon {
+    background: #F4BE32;
+    padding: 10px;
+}
+
+::ng-deep .ng-star-inserted {
+    color: black;
+    font-weight: bold;
+}
+
+::ng-deep .mat-step-text-label {
+    color: white;
+}

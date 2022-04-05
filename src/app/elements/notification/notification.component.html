@@ -1,0 +1,14 @@
+<div class="content-header">
+    <img class="nav-thumb-avatar" [src]="imagePath" alt="">
+    <div>
+        <p><a class="notif-name" [routerLink]="['/profil/',notification.emitterId]">{{notification.targetName }}</a> {{notification.content}}</p>
+        <p>{{ notification.createdAt | date :'dd/MM/yyyy à H:mm' }}</p>
+    </div>
+</div>
+<div *ngIf="notification.type === 'add-contact' && notification.requestState === 'no-answer'">
+    <button class="round-btn" (click)="acceptContact()"><mat-icon>check</mat-icon></button>
+    <button class="round-btn" (click)="refuseContact()"><mat-icon>close</mat-icon></button>
+</div>
+<div *ngIf="notification.type === 'send-message'">
+    <button class="round-btn" (click)="showMessage()">Voir</button>
+</div>

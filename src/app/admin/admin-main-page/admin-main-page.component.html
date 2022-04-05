@@ -1,0 +1,15 @@
+<nav class="nav-bar">
+    <a class="nav-logo" [routerLink]="['/']"><img class="icon-model" src="../../assets/img/icon/concert.svg" alt="logo"><p>WannaLive-[ zone administrateur ]</p></a>
+    <button class=" clear-btn btn-danger" (click)="logout()">Déconnexion</button>
+</nav>
+<div id="admin-area">
+    <nav id="admin-aside-navbar">
+        <a [routerLink]="['users']">Utilisateurs</a>
+        <a [routerLink]="['posts']">Posts</a>
+        <a [routerLink]="['comments']">Commentaires</a>
+        <a [routerLink]="['messages']">Messages chat</a>
+    </nav>
+    <div id="admin-window">
+        <router-outlet></router-outlet>
+    </div>
+</div>

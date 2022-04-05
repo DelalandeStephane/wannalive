@@ -1,0 +1,9 @@
+   <img class="contact-avatar" src="{{avatarPath}}" alt="avatar">
+    <div class="contact-data">
+        <h3 class="contact-name"><a [routerLink]="['/profil/',targetId]">{{contactUser?.userName}}</a></h3>
+        <p class="contact-cat">{{contactUser?.userCategory}}</p>
+        <p class="contact-subcat">{{contactUser?.userSubcategory}}</p>
+        <button *ngIf="state === 'contact-search'" class="btn-primary"  (click)="addContact(contactUser?._id)">Ajouter</button>
+        <button *ngIf="state === 'contact-user' && authData.profilId === authData.userId" class="btn-primary" (click)="deleteContact(contactUser?._id)" >Supprimer</button>
+        <p *ngIf="state === 'add-contact'">En attente d'autorisation</p>
+    </div>

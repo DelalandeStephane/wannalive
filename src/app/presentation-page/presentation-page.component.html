@@ -1,0 +1,33 @@
+<div class="presentation-block">
+    <h2>Présentation</h2>
+    <div class="presentation-el">
+        <img class="presentation-avatar" src="../../assets/img/picture/no-photo.png" alt="avatar">
+        <div class="presentation-data">
+            <h3 class="presentation-name">{{ userData?.userName }}</h3>
+            <p class="presentation-cat">{{ userData?.userCategory }}</p>
+            <p class="presentation-subcat">Metal</p>
+            <p>{{userData?.region}}</p>
+            <p>{{userData?.department}}</p>
+        </div>
+    </div>
+    <div class="contact-el">
+        <h3>Contact</h3>
+        <p>Email : {{ userData?.email }}</p>
+        <p>Télephone :{{ userData?.phoneNumber }}</p>
+        <p>Site web : {{ userData?.website }} </p>
+    </div>
+    <div class="social-block">
+        <h3>Réseaux sociaux</h3>
+        <a *ngIf="userData?.facebookLink" class="social-line" href="{{userData?.facebookLink}}"><img class="social-icon" src="../../assets/img/icon/social/facebook-logo.svg" alt="facebook-logo"> <span>Facebook</span></a>
+        <a *ngIf="userData?.twitterLink" class="social-line" href="{{userData?.twitterLink}}"><img class="social-icon" src="../../assets/img/icon/social/twitter-logo.svg" alt="twitter-logo">Twitter</a>
+        <a *ngIf="userData?.instagramLink" class="social-line" href="{{userData?.InstagramLink}}"><img class="social-icon" src="../../assets/img/icon/social/instagram-logo.svg" alt="instagram-logo">Instagram</a>
+        <a *ngIf="userData?.youtubeLink" class="social-line" href="{{userData?.youtubeLink}}"><img class="social-icon" src="../../assets/img/icon/social/youtube-logo.svg" alt="youtube-logo">Youtube</a>
+        <a *ngIf="userData?.spotifyLink" class="social-line" href="{{userData?.spotifyLink}}"><img class="social-icon" src="../../assets/img/icon/social/spotify-logo.svg" alt="spotify-logo">Spotify</a>
+        <a *ngIf="userData?.deezerLink" class="social-line" href="{{userData?.deezerLink}}"><img class="social-icon" src="../../assets/img/icon/social/deezer-logo.svg" alt="deezer-logo">Deezer</a>
+
+    </div>
+    <div class="description-block">
+        <h3>Description</h3>
+        <p>{{ userData.userDescription }}</p>
+    </div>
+</div>

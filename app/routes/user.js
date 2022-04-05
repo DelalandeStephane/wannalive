@@ -1,0 +1,31 @@
+const express = require("express");
+const router = express.Router();
+const auth = require('../middleware/auth');
+const mail = require('../middleware/mail');
+const userCtrl = require("../controllers/user");
+const avatarMulter = require('../middleware/avatar-multer-config');
+const backgroundMulter = require('../middleware/background-multer-config');
+const localisationCtrl = require("../controllers/Localisation");
+
+router.post("/upload-avatar/:verifyId",auth,avatarMulter,userCtrl.uploadAvatar);
+router.post("/upload-background/:verifyId",auth,backgroundMulter,userCtrl.uploadBackground);
+router.post("/verify-password/:verifyId",auth,userCtrl.verifyPassword);
+router.post("/update-password",auth,userCtrl.updatePassword);
+router.post("/forget-password",userCtrl.forgetPassword,mail.sendForgetPasswordMail);
+router.get("/get-all-dep/:region", localisationCtrl.getAllDep);
+router.get("/get-all-regions", localisationCtrl.getAllRegions);
+router.get("/get-user/:id", userCtrl.getUser);
+router.post("/get-all-user/:id",auth, userCtrl.getAllUser);
+router.get("/get-user-avatar/:id",auth, userCtrl.getUserAvatar);
+router.get("/get-user-background/:id",auth, userCtrl.getUserBackground);
+router.post("/update-User/:id",auth,userCtrl.updateUser);
+router.post("/add-contact/",auth,userCtrl.addContact);
+router.post("/add-request-contact/",auth,userCtrl.addRequestContact);
+router.post("/delete-contact/",auth,userCtrl.deleteContact);
+router.get("/get-contact-list/:id",auth, userCtrl.getContactList);
+router.get("/get-request-contact-list/:id",auth, userCtrl.getRequestContactList);
+router.get("/get-contact-from-list/:id", auth,userCtrl.getContactsFromList);
+router.get("/get-contact-count/:id", auth,userCtrl.getContactCount);
+router.get("/get-liked-post-by-curent-user/:id", auth,userCtrl.getLikedPostByUser);
+
+module.exports = router;

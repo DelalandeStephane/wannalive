@@ -1,0 +1,263 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$wannalive-primary: mat.define-palette(mat.$indigo-palette);
+$wannalive-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$wannalive-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$wannalive-theme: mat.define-light-theme((
+  color: (
+    primary: $wannalive-primary,
+    accent: $wannalive-accent,
+    warn: $wannalive-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($wannalive-theme);
+
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$wannalive-primary: mat.define-palette(mat.$indigo-palette);
+$wannalive-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$wannalive-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$wannalive-theme: mat.define-light-theme((
+  color: (
+    primary: $wannalive-primary,
+    accent: $wannalive-accent,
+    warn: $wannalive-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($wannalive-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
+
+* {
+    color: white;
+    font-family: 'Arimo', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+}
+.page-bg {
+    //background-color: #171817 ;
+    background:  url(./assets/img/bg/page_bg.png), #171817;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.deco-link {
+    color: #F4BE32;
+    font-weight: bold;
+}
+
+
+.nav-thumb-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+
+.icon-model {
+    width: 50px;
+    height: 50px;
+}
+
+.title-1 {
+    color: #F4BE32;
+    font-size: 3.2rem;
+}
+
+.title-3 {
+    color: #F4BE32;
+    font-size: 2rem;
+}
+
+.p-medium {
+    width: 500px;
+    font-size: 1rem;
+}
+
+.login-form {
+    input {
+        display: block;
+        margin: 5px 0 15px 0;
+        height: 30px;
+        width: 260px;
+    }
+
+    label {
+        color: #F4BE32;
+        font-weight: bold;
+    }
+}
+
+.btn-primary {
+    background-color: #F4BE32;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 6px;
+}
+
+.ng-star-inserted {
+    font-weight: normal !important;
+    color: white !important;
+}
+.clear-btn {
+    background: none;
+    border: none;
+}
+.bar-btn {
+    display: flex;
+    justify-content: space-between;
+}
+
+fieldset {
+    border: none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input, select, option {
+    color: black;
+}
+
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid {
+    border-color: red;
+}
+
+.input-alert {
+    color: red !important;
+    font-size: 0.7rem;
+}
+
+textarea {
+    resize: none;
+    color: black;
+}
+
+.file-input {
+    display: none;
+  }
+
+  .upload-btn {
+      background-color: #F4BE32;
+      padding: 10px;
+      border: none;
+      border-radius: 50%;
+  }
+
+  .avatar-thumb {
+      border-radius: 50%;
+  }
+
+.nav-logo {
+    display: flex;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.nav-logo p {
+    margin-left: -10px;
+    margin-top: 26px;
+}
+
+.main-container {
+    max-width: 940px;
+    margin: auto;
+    padding-top: 57px;
+}
+
+.no-content-alert {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-danger {
+    background: #dc3545;
+}
+.mat-option-text {
+    color: black !important ;
+}
+
+.passwordDialog{
+    .mat-dialog-container {
+        background: #272B2C;
+    }
+    input,.mat-form-field-label, .ng-star-inserted{
+        color: white!important;
+    }
+
+}
+
+.admin-table {
+    width: 100%;
+    button {
+        margin:0 10px;
+    }
+    td.mat-cell {
+        padding: 10px;
+        border: 1px solid black;
+    }
+}
+
+option.ng-star-inserted  {
+    color: #272B2C !important;
+}
+
+@media screen and (max-width: 800px)
+{
+    .btn-primary {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+    }
+
+    .mat-horizontal-content-container {
+        padding: 0 !important;
+    }
+ }

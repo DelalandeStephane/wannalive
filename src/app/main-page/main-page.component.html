@@ -1,0 +1,9 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+    <app-form-post [targetForm]="'main-page'"  (newPosts)="getNewPost($event)"></app-form-post>
+    <app-post *ngFor="let post of posts" [post] ="post"></app-post>
+    <p class="no-content-alert" *ngIf="posts <= 0">Pour avoir accès à l'actualité d'autre utilisateur vous devez être contact
+        avec eux <br>
+        <a class="btn-primary" [routerLink]="['recherche-contact']">Faite vous des contacts</a>
+    </p>
+</div>

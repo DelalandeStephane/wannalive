@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+    <form novalidate class="contact-search-form" [formGroup]="searchUserForm">
+        <label for="region">
+            <p>Région</p>
+            <select (change)="changeRegion($event)" formControlName="region">
+                <option value=""></option>
+                <option *ngFor="let region of regions" value="{{ region }}">{{ region }}</option>
+            </select>
+        </label>
+        <label for="departement">
+            <p>Departement</p>
+            <select (change)="changeDep($event)" formControlName="department">
+                <option value=""></option>
+                <option *ngFor="let d of departments" value="{{d.num_dep}}-{{d.dep_name}}">{{d.num_dep}}-{{d.dep_name}}</option>
+                
+            </select>
+        </label>
+        <label for="categorie">
+            <p>Categorie</p>
+            <select (change)="changeCategory($event)" formControlName="category" >
+                <option value=""></option>
+                <option value="artist">Artiste/Groupe</option>
+                <option value="Event-organizer">Organisateur</option>
+            </select>
+        </label>
+        <label *ngIf="showSubcategory" for="style">
+            <p>Style</p>
+            <select (change)="changeSubcategory()" formControlName="subcategory">
+                <option value=""></option>
+                <option *ngFor="let s of subcategories" value="{{s}}">{{s}}</option>
+            </select>
+        </label>
+        <label for="name">
+            <p>Recherche par nom</p>
+            <input (keyup)="changeUserName($event)" type="text" formControlName="username">
+        </label>
+    </form>
+    <h2>Contact</h2>
+<div class="contact-block">
+    <app-contact-card *ngFor="let user of users" 
+    [contactUser] ="user" 
+    [state] ="state"
+    [requestContactList] ="requestContactList"  
+    class="contact-el"
+    ></app-contact-card>
+    
+</div>
+    
+</div>
